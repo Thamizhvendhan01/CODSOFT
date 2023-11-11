@@ -1,0 +1,71 @@
+import java.util.*;
+import java.util.Random;
+
+public class Codesoft {
+    Scanner scan = new Scanner(System.in);
+     public  void numbergame(int randomnumber,int attempts){
+        while(attempts<=5){
+            System.out.println("Your"+" "+attempts+" "+"attempt");
+            System.out.print("Enter your guess number between 1 amd 100 ");
+            int guess = scan.nextInt();
+            
+            if(guess==randomnumber){
+                System.out.println("congratulation your guess is correct");
+                break;
+            }else if(guess>(randomnumber+10)){
+                System.out.println("your guess is too high");
+                
+            }else if(guess<(randomnumber-10)){
+                System.out.println("your guess is too low");
+                
+            }else if(guess<randomnumber){
+                System.out.println("your guess is low");
+                
+            }else if(guess>randomnumber){
+                System.out.println("your guess is high");
+                
+            }else{
+                System.out.println("invalid input");
+            }
+            attempts++;
+            
+        }
+        if(attempts==1){
+            System.out.println("Ypur score is 10");
+        }else if(attempts==2){
+            System.out.println("Yuur score is 7");
+        }else if(attempts==3){
+            System.out.println("Your score is 5");
+        }else if(attempts==4){
+            System.out.println("Your score is 3");
+        }else if(attempts==5){
+            System.out.println("Your score is 1");
+        }else{
+            System.out.println("Sorry,you did not score any points");
+        }
+        }
+    public static void main(String[] args) {
+        int min = 0;
+        int max = 100;
+        int score;
+        int attempts=1;
+        Random random = new Random();
+        int randomnumber = random.nextInt(max-min+1)+min;
+        System.out.println("Enter yes to start the game");
+        Codesoft cs = new Codesoft();
+        cs.numbergame(randomnumber,attempts);
+        System.out.println("Enter 1 to play again  2 to terminate");
+        Scanner scan1 = new Scanner(System.in);
+        int option = scan1.nextInt();
+        while(option!=2){          
+        switch(option){
+            case 1:
+                cs.numbergame(randomnumber,attempts);
+                break;
+            case 2:
+                System.out.println("Thank you");
+            }
+        }
+        System.out.println("Thank you for playing");
+    }
+}
