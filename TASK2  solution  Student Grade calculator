@@ -1,0 +1,103 @@
+package codesoft;
+import java.util.*;
+public class Codesoft {
+    int total;
+    float Average;
+    String Grade;
+    public void totslmark(int tamil,int english,int maths,int science,int social ){
+        int total = tamil+english+maths+science+social;
+        System.out.println("total mark is " + total);
+    }
+    public void Averagepercent(int tamil,int english,int maths,int science,int social){
+        float Average = (float)(tamil+english+maths+science+social)/5; 
+        System.out.println("Average percentage is "+(float)Average+"%");
+    }
+    public void Gradecal(float Average){
+        System.out.println("Grade calculation");
+        if( Average<=100 && Average >= 90){
+            Grade ="O";
+            System.out.println("grade is O");
+        }else if(Average<90 && Average >= 80){
+            Grade ="A+";
+            System.out.println("grade is A+");
+        }else if(Average<80 && Average>=70){
+            Grade ="A";
+            System.out.println("grade is A");
+        }else if(Average<70 && Average >=60){
+            Grade ="B+";
+            System.out.println("grade is B+");
+        }else if(Average<60 && Average>=50){
+            Grade ="B";
+            System.out.println("grade is B");
+        }else{
+            Grade ="C";
+            System.out.println("grade is C");
+            System.out.println("You failed");
+        }
+    }
+    public void display(){
+        System.out.println("total mark is "+total);
+        System.out.println("Average is "+Average);
+        System.out.println("Grade is "+Grade);
+    }
+    
+    public static void main(String[] args) {
+       Scanner scan = new Scanner(System.in);
+        System.out.println("Enter the marks of each Subject");
+        System.out.print("Enter the mark of Tamil out of 100 ");
+        int n1 = scan.nextInt();
+        while(n1>100 || n1<0){
+        if(n1<0 || n1>100){
+            System.out.println("Enter the valid input");
+            System.out.print("Enter the mark of Tamil out of 100 ");
+        }
+        int tamil = scan.nextInt();
+        n1=tamil;
+    }
+        System.out.print("Enter the mark of English out of 100 ");
+        int n2 = scan.nextInt();
+        while(n2>100 || n2<0){
+        if(n2<0 || n2>100){
+            System.out.println("Enter the valid input");
+            System.out.print("Enter the mark of English out of 100 ");
+        }
+        int english = scan.nextInt();
+        n2 = english;
+        }
+        System.out.print("Enter the mark of Maths out of 100 ");
+        int n3 = scan.nextInt();
+        while(n3>100 || n3<0){
+        if(n3<0 || n3>100){
+            System.out.println("Enter the valid input");
+            System.out.print("Enter the mark of Maths out of 100 ");
+        }
+        int maths = scan.nextInt();
+        n3 = maths;
+        }
+        System.out.print("Enter the mark of Science out of 100 ");
+        int n4 = scan.nextInt();
+        while(n4>100 || n4<0){
+        if(n4<0 || n4>100){
+            System.out.println("Enter the valid input");
+            System.out.print("Enter the mark of Science out of 100 ");
+        }
+        int science = scan.nextInt();
+        n4 = science;
+        }
+        System.out.print("Enter the mark of English out of 100 ");
+        int n5 = scan.nextInt();
+        while(n5>100 || n5<0){
+        if(n5<0 || n5>100){
+            System.out.println("Enter the valid input");
+            System.out.print("Enter the mark of Social out of 100 ");
+        }
+        int social = scan.nextInt();
+        n5 = social;
+        }
+        float Average = (float)(n1+n2+n3+n4+n5)/5;
+        Codesoft cs = new Codesoft();
+        cs.totslmark(n1,n2,n3,n4,n5);
+        cs.Averagepercent(n1,n2 , n3, n4, n5);
+        cs.Gradecal((float) Average);
+    }
+}
