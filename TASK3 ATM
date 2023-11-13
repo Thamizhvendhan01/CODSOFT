@@ -1,0 +1,93 @@
+import java.util.*;
+public class Codesoft {
+    public static void main(String[] args) {
+        UserAccount ua = new UserAccount(1000);
+        ATM atm = new ATM(ua);
+        atm.Main();
+       
+    }
+}
+class UserAccount{
+    double balance;
+    UserAccount(int amount){
+        this.balance = amount;
+    }
+    public boolean deposite(double amount){
+        if(amount>0){
+            balance = (double) (balance+amount);
+            return true;
+        }else{
+            System.out.println("Invalid amount");
+            return false;
+        }
+    }
+    public boolean withdraw(double amount){
+        if(amount<balance && amount>0){
+                balance = balance-amount;
+                return true;
+        }else{
+            System.out.println("Invalid withdraw amount");
+            return false;
+        }
+    }
+    public double checkbalance(){
+        return balance;
+    }
+}
+class ATM{
+    Scanner scan = new Scanner(System.in);
+    UserAccount ua;
+    ATM(UserAccount ua){
+        this.ua=ua;
+    }
+    public void Menu(){
+        System.out.println("Enter 1 to Withdraw");
+        System.out.println("Enter 2 to Deposte");
+        System.out.println("Enter 3 to checkbalabce");
+        System.out.println("Enter 4 to Exit");
+    }
+    public void Main(){
+        Scanner scan = new Scanner(System.in);
+        Menu();
+        int option = scan.nextInt();        
+        if(option>0 && option <5){
+            switch(option){
+                case 1:
+                    withdraw();
+                    break;
+                case 2:
+                    deposite();
+                    break;
+                case 3:
+                    checkbalance();
+                    break;
+                case 4:
+                    System.out.println("Exiting ATM");
+            }
+        }else{
+            System.out.println("Invalid Option");
+        }
+    }
+    public void withdraw(){
+        System.out.print("Enter the amount to withdraw");
+        double amount = scan.nextDouble();
+        if(ua.withdraw(amount)){
+            System.out.println("Amount is Withdraw Successfully");
+        }else{
+            System.out.println("Amount invalid");
+        }
+    }
+    public void deposite(){
+        System.out.println("Enter amount to deposite");
+        double amount = scan.nextDouble();
+        if(ua.deposite(amount)){
+            System.out.println("Amount is Deposite Successfully");
+        }else{
+            System.out.println("Invalid amount to deposite");
+        }
+    }
+    public void checkbalance(){
+        double balance = ua.checkbalance();
+        System.out.println("BAlance amount is " + balance);
+    }
+}
